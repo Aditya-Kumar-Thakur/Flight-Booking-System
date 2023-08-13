@@ -1,0 +1,287 @@
+#include<iostream>
+#include<fstream>//for file handling operation
+#include<iomanip>//for floating point value
+using namespace std;
+void mainMenu();
+class Management{
+    public:
+    Management(){
+        mainMenu();
+    }
+    
+};
+//create Details class for enter users data
+class Details{
+    public:
+    static string name, gender;
+    int phoneNo;
+    int age;
+    string add;
+    static int cId;
+    char arr[100];
+    void information(){
+        cout<<"\nEnter the CostumerId : ";
+        cin>>cId;
+        cout<<"\nEnter your name : ";
+        cin>>name;
+        cout<<"\nEnter your age : ";
+        cin>>age;
+        cout<<"\nEnter your gender: ";
+        cin>>gender;
+        cout<<"\nEnter your PhoneNo: ";
+        cin>>phoneNo;
+        cout<<"\nEnter your address: ";
+        cin>>add;
+        cout<<"Your Details is saved with us\n"<<endl;
+        
+    }
+};
+//now we have to use some of the variable of Details class to the ticket class
+// using 
+int Details::cId;
+string Details::name;
+string Details::gender;
+class registration{
+    public:
+    static int choice;
+    int choice1;
+    int back;
+    static float charges;
+    void flights(){
+        //USA=Mumbai,
+        string flightN[]={"Dubai","Canada","UK","USA","Australia","Europe"};
+        for(int j=0;j<6;j++){
+            cout<<(j+1)<<".flight to "<<flightN[j]<<endl;
+        }
+        cout<<"\nWelcome to the Airlines !"<<endl;
+        cout<<"Press the destination country number where you want to book the flights"<<endl;
+        cin>>choice;//choice for which country u want to go
+        switch(choice)
+        {
+            case 1:
+            {
+                cout<<"_Dubai Emirates__\n"<<endl;
+                cout<<"Your comfort is our priority,Enjoy the Journey"<<endl;
+                cout<<"Following are the flights\n"<<endl;
+                cout<<"1. DUB-498"<<endl;
+                cout<<"\t08-06-2023 08:00PM 10hrs 14000"<<endl;
+                cout<<"2. DUB-658"<<endl;
+                cout<<"\t09-06-2023 06:00AM 7hrs 18000"<<endl;
+                cout<<"3. DUB-550"<<endl;
+                cout<<"\t12-06-2023 01:00PM 12hrs 9000"<<endl;
+                cout<<"\n Select the flight you want to book :";
+                cin>>choice1;//choice1 which particular flight u want to take for that country
+                if(choice1==1)
+                {
+                    charges=14000;
+                    cout<<"\n You have successfully booked the flight DUB-498"<<endl;
+                    cout<<"You can goback to the menu and take the ticket"<<endl;
+                }else if(choice1==2){
+                    charges=18000;
+                    cout<<"\n You have successfully booked the flight DUB-658"<<endl;
+                    cout<<"You can goback to the menu and take the ticket"<<endl;
+                }else if(choice1==3){
+                    charges=9000;
+                    cout<<"\n You have successfully booked the flight DUB-550"<<endl;
+                    cout<<"You can goback to the menu and take the ticket"<<endl;
+                }else{
+                    cout<<"Invalid input,shifting to the previous menu"<<endl;
+                    flights();
+                }
+                cout<<"Press any key to go for mainMenu"<<endl;
+                cin>>back;
+                if(back==1){
+                    mainMenu();
+                }else{
+                    mainMenu();
+                }
+                
+                
+            }
+            case 2:
+            {
+                cout<<"_Canadian Airlines__\n"<<endl;
+                cout<<"Your comfort is our priority,Enjoy the Journey"<<endl;
+                cout<<"Following are the flights\n"<<endl;
+                cout<<"1. CA-498"<<endl;
+                cout<<"\t08-06-2023 09:00PM 11hrs 15000"<<endl;
+                cout<<"2. CA-658"<<endl;
+                cout<<"\t09-06-2023 07:00AM 7hrs 19000"<<endl;
+                cout<<"3. CA-550"<<endl;
+                cout<<"\t12-06-2023 02:00PM 12hrs 10000"<<endl;
+                cout<<"\n Select the flight you want to book";
+                cin>>choice1;
+                if(choice1==1)
+                {
+                    charges=15000;
+                    cout<<"\n You have successfully booked the flight CA-498"<<endl;
+                    cout<<"You can goback to the menu and take the ticket"<<endl;
+                }else if(choice1==2){
+                    charges=19000;
+                    cout<<"\n You have successfully booked the flight CA-658"<<endl;
+                    cout<<"You can goback to the menu and take the ticket"<<endl;
+                }else if(choice1==3){
+                    charges=10000;
+                    cout<<"\n You have successfully booked the flight CA-550"<<endl;
+                    cout<<"You can goback to the menu and take the ticket"<<endl;
+                }else{
+                    cout<<"Invalid input,shifting to the previous menu"<<endl;
+                    flights();
+                }
+                cout<<"Press any key to go for mainMenu"<<endl;
+                cin>>back;
+                if(back==1){
+                    mainMenu();
+                }else{
+                    mainMenu();
+                }
+            }
+            case 3:
+            {
+                cout<<"_UK Airlines__\n"<<endl;
+                cout<<"Your comfort is our priority,Enjoy the Journey"<<endl;
+                cout<<"Following are the flights\n"<<endl;
+                cout<<"1. UK-498"<<endl;
+                cout<<"\t08-06-2023 09:00PM 11hrs 15000"<<endl;
+                cout<<"\n Select the flight you want to book";
+                cin>>choice1;
+                if(choice1==1)
+                {
+                    charges=44000;
+                    cout<<"\n You have successfully booked the flight UK-498"<<endl;
+                    cout<<"You can goback to the menu and take the ticket"<<endl;
+                }else{
+                    cout<<"Invalid input,shifting to the previous menu"<<endl;
+                    flights();
+                }
+                cout<<"Press any key to go for mainMenu"<<endl;
+                cin>>back;
+                if(back==1){
+                    mainMenu();
+                }else{
+                    mainMenu();
+                }
+            }
+            case 4:
+            {
+                cout<<"_Welcome to US Airways__\n"<<endl;
+                cout<<"Your comfort is our priority,Enjoy the Journey"<<endl;
+                cout<<"Following are the flights\n"<<endl;
+                cout<<"1. US-498"<<endl;
+                cout<<"\t08-06-2023 09:00PM 11hrs 15000"<<endl;
+                cout<<"2. US-658"<<endl;
+                cout<<"\t09-06-2023 07:00AM 7hrs 19000"<<endl;
+                cout<<"3. US-550"<<endl;
+                cout<<"\t12-06-2023 02:00PM 12hrs 10000"<<endl;
+                cout<<"\n Select the flight you want to book";
+                cin>>choice1;
+                if(choice1==1)
+                {
+                    charges=15000;
+                    cout<<"\n You have successfully booked the flight US-498"<<endl;
+                    cout<<"You can goback to the menu and take the ticket"<<endl;
+                }else if(choice1==2){
+                    charges=19000;
+                    cout<<"\n You have successfully booked the flight US-658"<<endl;
+                    cout<<"You can goback to the menu and take the ticket"<<endl;
+                }else if(choice1==3){
+                    charges=10000;
+                    cout<<"\n You have successfully booked the flight US-550"<<endl;
+                    cout<<"You can goback to the menu and take the ticket"<<endl;
+                }else{
+                    cout<<"Invalid input,shifting to the previous menu"<<endl;
+                    flights();
+                }
+                cout<<"Press any key to go for mainMenu"<<endl;
+                cin>>back;
+                if(back==1){
+                    mainMenu();
+                }else{
+                    mainMenu();
+                }
+            }
+            case 5:
+            {
+                cout<<"_Australian Airlines__\n"<<endl;
+                cout<<"Your comfort is our priority,Enjoy the Journey"<<endl;
+                cout<<"Following are the flights\n"<<endl;
+                cout<<"1. AS-498"<<endl;
+                cout<<"\t08-06-2023 09:00PM 11hrs 15000"<<endl;
+                cout<<"2. AS-658"<<endl;
+                cout<<"\t09-06-2023 07:00AM 7hrs 19000"<<endl;
+                cout<<"3. AS-550"<<endl;
+                cout<<"\t12-06-2023 02:00PM 12hrs 10000"<<endl;
+                cout<<"\n Select the flight you want to book";
+                cin>>choice1;
+                if(choice1==1)
+                {
+                    charges=15000;
+                    cout<<"\n You have successfully booked the flight AS-498"<<endl;
+                    cout<<"You can goback to the menu and take the ticket"<<endl;
+                }else if(choice1==2){
+                    charges=19000;
+                    cout<<"\n You have successfully booked the flight AS-658"<<endl;
+                    cout<<"You can goback to the menu and take the ticket"<<endl;
+                }else if(choice1==3){
+                    charges=10000;
+                    cout<<"\n You have successfully booked the flight AS-550"<<endl;
+                    cout<<"You can goback to the menu and take the ticket"<<endl;
+                }else{
+                    cout<<"Invalid input,shifting to the previous menu"<<endl;
+                    flights();
+                }
+                cout<<"Press any key to go for mainMenu"<<endl;
+                cin>>back;
+                if(back==1){
+                    mainMenu();
+                }else{
+                    mainMenu();
+                }
+            }
+            case 6:
+            {
+                cout<<"_EUROPIAN Airlines__\n"<<endl;
+                cout<<"Your comfort is our priority,Enjoy the Journey"<<endl;
+                cout<<"Following are the flights\n"<<endl;
+                cout<<"1. EA-498"<<endl;
+                cout<<"\t08-06-2023 09:00PM 11hrs 15000"<<endl;
+                cout<<"2. EA-658"<<endl;
+                cout<<"\t09-06-2023 07:00AM 7hrs 19000"<<endl;
+                cout<<"3. EA-550"<<endl;
+                cout<<"\t12-06-2023 02:00PM 12hrs 10000"<<endl;
+                cout<<"\n Select the flight you want to book";
+                cin>>choice1;
+                if(choice1==1)
+                {
+                    charges=15000;
+                    cout<<"\n You have successfully booked the flight EA-498"<<endl;
+                    cout<<"You can goback to the menu and take the ticket"<<endl;
+                }else if(choice1==2){
+                    charges=19000;
+                    cout<<"\n You have successfully booked the flight EA-658"<<endl;
+                    cout<<"You can goback to the menu and take the ticket"<<endl;
+                }else if(choice1==3){
+                    charges=10000;
+                    cout<<"\n You have successfully booked the flight EA-550"<<endl;
+                    cout<<"You can goback to the menu and take the ticket"<<endl;
+                }else{
+                    cout<<"Invalid input,shifting to the previous menu"<<endl;
+                    flights();
+                }
+                cout<<"Press any key to go for mainMenu"<<endl;
+                cin>>back;
+                if(back==1){
+                    mainMenu();
+                }else{
+                    mainMenu();
+                }
+            }
+            default :
+            {
+                cout<<"Invalid input,shifting you to the main menu"<<endl;
+                mainMenu();
+                break;
+            }
+        }
+        
+    }
