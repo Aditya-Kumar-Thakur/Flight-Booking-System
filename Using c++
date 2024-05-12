@@ -20,24 +20,24 @@ class Details{
     static int cId;
     char arr[100];
     void information(){
-        cout<<"\nEnter the CostumerId : ";
+        cout<<"\nEnter the CostumerId";
         cin>>cId;
-        cout<<"\nEnter your name : ";
+        cout<<"\nEnter your name";
         cin>>name;
-        cout<<"\nEnter your age : ";
+        cout<<"\nEnter your age";
         cin>>age;
-        cout<<"\nEnter your gender: ";
+        cout<<"\nEnter your gender";
         cin>>gender;
-        cout<<"\nEnter your PhoneNo: ";
+        cout<<"\nEnter your PhoneNo";
         cin>>phoneNo;
-        cout<<"\nEnter your address: ";
+        cout<<"\nEnter your address";
         cin>>add;
         cout<<"Your Details is saved with us\n"<<endl;
         
     }
 };
 //now we have to use some of the variable of Details class to the ticket class
-// using 
+// :: scope resolution operator
 int Details::cId;
 string Details::name;
 string Details::gender;
@@ -49,7 +49,7 @@ class registration{
     static float charges;
     void flights(){
         //USA=Mumbai,
-        string flightN[]={"Dubai","Canada","UK","USA","Australia","Europe"};
+        string flightN[]={"Delhi","Chennai","Kolkata","Mumbai","Bangalore","Hyderabad"};
         for(int j=0;j<6;j++){
             cout<<(j+1)<<".flight to "<<flightN[j]<<endl;
         }
@@ -60,7 +60,7 @@ class registration{
         {
             case 1:
             {
-                cout<<"_Dubai Emirates__\n"<<endl;
+                cout<<"____________________Dubai Emirates_________________\n"<<endl;
                 cout<<"Your comfort is our priority,Enjoy the Journey"<<endl;
                 cout<<"Following are the flights\n"<<endl;
                 cout<<"1. DUB-498"<<endl;
@@ -69,7 +69,7 @@ class registration{
                 cout<<"\t09-06-2023 06:00AM 7hrs 18000"<<endl;
                 cout<<"3. DUB-550"<<endl;
                 cout<<"\t12-06-2023 01:00PM 12hrs 9000"<<endl;
-                cout<<"\n Select the flight you want to book :";
+                cout<<"\n Select the flight you want to book";
                 cin>>choice1;//choice1 which particular flight u want to take for that country
                 if(choice1==1)
                 {
@@ -100,7 +100,7 @@ class registration{
             }
             case 2:
             {
-                cout<<"_Canadian Airlines__\n"<<endl;
+                cout<<"____________________Canadian Airlines_________________\n"<<endl;
                 cout<<"Your comfort is our priority,Enjoy the Journey"<<endl;
                 cout<<"Following are the flights\n"<<endl;
                 cout<<"1. CA-498"<<endl;
@@ -138,7 +138,7 @@ class registration{
             }
             case 3:
             {
-                cout<<"_UK Airlines__\n"<<endl;
+                cout<<"____________________UK Airlines_________________\n"<<endl;
                 cout<<"Your comfort is our priority,Enjoy the Journey"<<endl;
                 cout<<"Following are the flights\n"<<endl;
                 cout<<"1. UK-498"<<endl;
@@ -164,7 +164,7 @@ class registration{
             }
             case 4:
             {
-                cout<<"_Welcome to US Airways__\n"<<endl;
+                cout<<"____________________Welcome to US Airways_________________\n"<<endl;
                 cout<<"Your comfort is our priority,Enjoy the Journey"<<endl;
                 cout<<"Following are the flights\n"<<endl;
                 cout<<"1. US-498"<<endl;
@@ -202,7 +202,7 @@ class registration{
             }
             case 5:
             {
-                cout<<"_Australian Airlines__\n"<<endl;
+                cout<<"____________________Australian Airlines_________________\n"<<endl;
                 cout<<"Your comfort is our priority,Enjoy the Journey"<<endl;
                 cout<<"Following are the flights\n"<<endl;
                 cout<<"1. AS-498"<<endl;
@@ -240,7 +240,7 @@ class registration{
             }
             case 6:
             {
-                cout<<"_EUROPIAN Airlines__\n"<<endl;
+                cout<<"____________________EUROPIAN Airlines_________________\n"<<endl;
                 cout<<"Your comfort is our priority,Enjoy the Journey"<<endl;
                 cout<<"Following are the flights\n"<<endl;
                 cout<<"1. EA-498"<<endl;
@@ -285,3 +285,135 @@ class registration{
         }
         
     }
+    
+};
+float registration::charges;
+int registration::choice;
+class ticket: registration,Details
+{
+    public:
+    void Bill(){
+        string destination=" ";
+        ofstream outf("record.txt");
+        {
+            outf<<"_________________XYZ AIRLINES____________"<<endl;
+            outf<<"_________________Ticket__________________"<<endl;
+            outf<<"_________________________________________"<<endl;
+            outf<<"costumer id: "<<Details::cId<<endl;
+            outf<<"costumer name: "<<Details::name<<endl;
+            outf<<"costumer Gender: "<<Details::gender<<endl;
+            outf<<"\tDescription "<<endl<<endl;
+            if(registration::choice==1)
+            {
+                destination="Dubai";
+            }else if(registration::choice==2)
+            {
+                destination="Canada";
+            }else if(registration::choice==3)
+            {
+                destination="UK";
+            }else if(registration::choice==4)
+            {
+                destination="USA";
+            }else if(registration::choice==5)
+            {
+                destination="Europe";
+            }
+            outf<<"Destination\t\t"<<destination<<endl;
+            outf<<"flight cost:\t\t"<<registration::charges<<endl;
+            
+        }
+        outf.close();
+    }
+    void display(){
+        ifstream ifs("record.txt");
+            if(ifs){
+            cout<<"File error"<<endl;
+            }
+            while(!ifs.eof()){
+            ifs.getline(arr,100);
+            cout<<arr<<endl;
+            }
+        
+        ifs.close();
+        
+    }
+};
+void mainMenu(){
+    int lchoice;
+    int schoice;
+    int back;
+    cout<<"\t           XYZ Airlines \n"<<endl;
+    cout<<"\t__________________MainMenu______________________\n"<<endl;
+    cout<<"\t|\t\t\t\t\t\t|\t"<<endl;
+    cout<<"\t\t|\t Press 1 to add costumer datails  \t|"<<endl;
+    cout<<"\t\t|\t Press 2 for flight registration  \t|"<<endl;
+    cout<<"\t\t|\t Press 3 for ticket and charges   \t|"<<endl;
+    cout<<"\t\t|\t Press 4 to Exit                  \t|"<<endl;
+    cout<<"\t|\t\t\t\t\t\t|\t"<<endl;
+    cout<<"\t__________________MainMenu______________________\n"<<endl;
+    cout<<"Enter the choice:  ";
+    cin>>lchoice;
+    Details d; //classname=Details obj name=d
+    registration r;
+    ticket t;
+    switch(lchoice){
+        case 1:
+        {
+            cout<<"_________costumer_________________/n"<<endl;
+            d.information();
+            cout<<"Press any key to go back to main menu ";
+            cin>>back;
+            if(back==1){
+                mainMenu();
+            }else{
+                mainMenu();
+            }
+            break;
+        }
+        case 2:
+        {
+            cout<<"_________Book a flight using this system_____________/n"<<endl;
+            r.flights();
+            break;
+        }
+        case 3:
+        {
+            cout<<"_____________Get you ticket_______________________/n"<<endl;
+            t.Bill();
+            cout<<"your ticket is printed ,you can collect your ticket"<<endl;
+            cout<<"Press 1. to display your ticket"<<endl;
+            cin>>back;
+            if(back==1){
+                t.display();
+                cout<<"Press any key to go back to the mainMenu"<<endl;
+                cin>>back;
+                if(back==1){
+                    mainMenu();
+                }else{
+                    mainMenu();
+                }
+            }else{
+                mainMenu();
+            }
+            break;
+            
+        }
+        case 4:
+        {
+            cout<<"\n\n\t______________Thank you__________"<<endl;
+            break;
+        }
+        default:
+        {
+            cout<<"Invalid input,please try again!\n"<<endl;
+            mainMenu();
+            break;
+        }
+    }
+}
+int main(){
+    Management Mobj;
+    return 0;
+}
+
